@@ -43,7 +43,7 @@ public class Controller : MonoBehaviour
                 animator.SetFloat("LookDirection", -1f);
             }
         }*/
-        if (Input.GetKeyDown(KeyCode.JoystickButton0))
+        if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
