@@ -14,6 +14,8 @@ public class Controller : MonoBehaviour
 
     public float gravityModifier;
 
+    // float input = 0;
+
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -24,6 +26,23 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
+        /*input = Input.GetAxis("Horizontal");
+        if (input == 0f)
+        {
+            animator.SetBool("IsRunning", false);
+        }
+        else
+        {
+            animator.SetBool("IsRunning", true);
+            if (input > 0)
+            {
+                animator.SetFloat("LookDirection", 1f);
+            }
+            else if (input < 0)
+            {
+                animator.SetFloat("LookDirection", -1f);
+            }
+        }*/
         if (Input.GetKeyDown(KeyCode.JoystickButton0))
         {
             Jump();
@@ -54,4 +73,9 @@ public class Controller : MonoBehaviour
             rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
+
+    /* public float GetInput()
+     {
+         return input;
+     }*/
 }

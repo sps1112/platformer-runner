@@ -44,8 +44,6 @@ namespace Platformer.Mechanics
 
         public Bounds Bounds => collider2d.bounds;
 
-        public bool canMove = false;
-
         void Awake()
         {
             health = GetComponent<Health>();
