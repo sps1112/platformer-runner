@@ -51,8 +51,8 @@ public class Controller : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.black, 0.1f);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.75f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(transform.position, Vector2.down * 0.85f, Color.black, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.85f, LayerMask.GetMask("Ground"));
         if (hit.collider != null)
         {
             isGrounded = true;
