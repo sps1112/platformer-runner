@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollectibleSpawner : MonoBehaviour
 {
+    public GameObject collectionObject;
+
     public GameObject[] collectibles;
 
     int index = 0;
@@ -12,7 +14,11 @@ public class CollectibleSpawner : MonoBehaviour
     {
         if (other.gameObject.tag == "Point")
         {
-            SetCollectible(other.gameObject.transform.position);
+            int childCount = other.gameObject.transform.childCount;
+            if (childCount == 0)
+            {
+                SetCollectible(other.gameObject);
+            }
         }
         else
         {
@@ -22,13 +28,23 @@ public class CollectibleSpawner : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-
+        if (other.gameObject.tag == "Point")
+        {
+            int childCount = other.gameObject.transform.childCount;
+            if (childCount > 0)
+            {
+                GameObject childObject = other.gameObject.transform.GetChild(0).gameObject;
+                other.gameObject.transform.DetachChildren();
+                childObject.transform.SetParent(collectionObject.transform);
+                childObject.SetActive(false);
+            }
+        }
     }
-
-    void SetCollectible(Vector3 spawnPosition)
+    void SetCollectible(GameObject parentPoint)
     {
-        collectibles[index].transform.position = spawnPosition;
+        collectibles[index].transform.position = parentPoint.transform.position;
         collectibles[index].SetActive(true);
+        collectibles[index].transform.SetParent(parentPoint.transform);
         index++;
         index %= collectibles.Length;
     }

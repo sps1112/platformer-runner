@@ -40451,6 +40451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df57a7f209986e4ea4735a9fcbb2186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectionObject: {fileID: 168621465}
   collectibles:
   - {fileID: 1217219860}
   - {fileID: 1082454560}
@@ -41828,6 +41829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player.Endless
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976822940207131140, guid: 6eca0f85422ad2a45b7768487407ba48,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4976822940207131146, guid: 6eca0f85422ad2a45b7768487407ba48,
         type: 3}
