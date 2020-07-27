@@ -6,14 +6,12 @@ public class grapplinghook : MonoBehaviour
 {
     DistanceJoint2D joint;
     Vector3 targetPos;
-   
-    public float distance = 10f;
+
+    public float maxDistance = 10f;
     GameObject player;
     
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-       
         joint = GetComponent<DistanceJoint2D>();
         joint.enabled = false;
        
@@ -22,16 +20,17 @@ public class grapplinghook : MonoBehaviour
     
     void Update() {
 
+       
 
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         if (Input.GetKeyDown(KeyCode.E))
         {
            
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float playerDis = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), worldPoint);
 
-            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero,10.0f);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero,0.1f);
 
-            if (hit.rigidbody != null)
+            if (hit.rigidbody != null && (maxDistance >= playerDis) )
             {
                 Debug.Log("Yes");
 
